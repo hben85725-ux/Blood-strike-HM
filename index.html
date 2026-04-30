@@ -31,7 +31,6 @@
             position: relative;
         }
 
-        /* Animated background */
         body::before {
             content: '';
             position: fixed;
@@ -52,7 +51,6 @@
             100% { opacity: 0.8; }
         }
 
-        /* Grid pattern overlay */
         body::after {
             content: '';
             position: fixed;
@@ -75,7 +73,6 @@
             z-index: 1;
         }
 
-        /* Header with logo */
         .header {
             text-align: center;
             margin-bottom: 3rem;
@@ -116,7 +113,6 @@
             animation: fadeIn 1s ease-out 0.5s forwards;
         }
 
-        /* Hero section */
         .hero {
             position: relative;
             margin-bottom: 4rem;
@@ -143,7 +139,6 @@
                 0 0 60px rgba(255, 51, 51, 0.5);
         }
 
-        /* Download section */
         .download-section {
             text-align: center;
             margin-bottom: 3rem;
@@ -195,9 +190,7 @@
             transition: left 0.5s ease;
         }
 
-        .download-card:hover::before {
-            left: 100%;
-        }
+        .download-card:hover::before { left: 100%; }
 
         .download-card:hover {
             transform: translateY(-15px) scale(1.05);
@@ -291,6 +284,246 @@
             z-index: 1;
         }
 
+        /* ===== FEATURES SECTION ===== */
+        .features-section {
+            text-align: center;
+            margin: 5rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 51, 51, 0.15);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            letter-spacing: 0.1em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(15,15,15,0.95) 100%);
+            border: 1px solid rgba(255, 51, 51, 0.15);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 51, 51, 0.4);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255, 51, 51, 0.15);
+        }
+
+        .feature-emoji {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ===== WHY SECTION ===== */
+        .why-section {
+            text-align: center;
+            margin: 5rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 51, 51, 0.15);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .why-card {
+            background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(15,15,15,0.95) 100%);
+            border: 1px solid rgba(255, 51, 51, 0.15);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 107, 0, 0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 25px rgba(255, 107, 0, 0.2);
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top center, rgba(255,107,0,0.05) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .why-card:hover::before {
+            opacity: 1;
+        }
+
+        .why-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .why-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .why-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            margin: 5rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 51, 51, 0.15);
+        }
+
+        .faq-section .section-title {
+            text-align: center;
+        }
+
+        .faq-section .section-subtitle {
+            text-align: center;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(15,15,15,0.95) 100%);
+            border: 1px solid rgba(255, 51, 51, 0.15);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-item.open {
+            border-color: rgba(255, 51, 51, 0.4);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--accent-red);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-align: left;
+            padding: 1.3rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.03em;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 51, 51, 0.05);
+        }
+
+        .faq-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--accent-orange);
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding: 0 1.5rem 1.3rem;
+        }
+
+        /* ===== DIVIDER ===== */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -299,6 +532,8 @@
             font-size: 0.9rem;
             opacity: 0;
             animation: fadeIn 1s ease-out 1.8s forwards;
+            border-top: 1px solid rgba(255, 51, 51, 0.1);
+            margin-top: 2rem;
         }
 
         /* Animations */
@@ -308,48 +543,37 @@
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .download-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .download-card {
-                padding: 1.5rem;
-            }
+            .logo { font-size: 2.5rem; }
+            .section-title { font-size: 1.8rem; }
+            .download-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .download-card { padding: 1.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
         }
 
-        /* Particle effect on cursor */
         .cursor-trail {
             position: fixed;
             width: 10px;
@@ -363,19 +587,14 @@
         }
 
         @keyframes trailFade {
-            from {
-                opacity: 0.8;
-                transform: scale(1);
-            }
-            to {
-                opacity: 0;
-                transform: scale(0);
-            }
+            from { opacity: 0.8; transform: scale(1); }
+            to { opacity: 0; transform: scale(0); }
         }
     </style>
 </head>
 <body>
     <div class="container">
+
         <!-- Header -->
         <header class="header">
             <div class="logo-container">
@@ -387,7 +606,6 @@
         <!-- Hero Section -->
         <section class="hero">
             <svg class="hero-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                <!-- Game-style background -->
                 <defs>
                     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
@@ -405,11 +623,7 @@
                         </feMerge>
                     </filter>
                 </defs>
-                
-                <!-- Background -->
                 <rect width="800" height="600" fill="url(#bgGrad)"/>
-                
-                <!-- Grid pattern -->
                 <g opacity="0.1">
                     <line x1="0" y1="150" x2="800" y2="150" stroke="#ff3333" stroke-width="1"/>
                     <line x1="0" y1="300" x2="800" y2="300" stroke="#ff3333" stroke-width="1"/>
@@ -418,68 +632,40 @@
                     <line x1="400" y1="0" x2="400" y2="600" stroke="#ff3333" stroke-width="1"/>
                     <line x1="600" y1="0" x2="600" y2="600" stroke="#ff3333" stroke-width="1"/>
                 </g>
-                
-                <!-- Central emblem -->
                 <g transform="translate(400, 300)" filter="url(#glow)">
-                    <!-- Outer ring -->
                     <circle cx="0" cy="0" r="180" fill="none" stroke="url(#redGrad)" stroke-width="4" opacity="0.8"/>
                     <circle cx="0" cy="0" r="160" fill="none" stroke="url(#redGrad)" stroke-width="2" opacity="0.5"/>
-                    
-                    <!-- Inner design -->
-                    <polygon points="0,-120 40,-40 120,-30 40,20 60,100 0,60 -60,100 -40,20 -120,-30 -40,-40" 
-                             fill="url(#redGrad)" opacity="0.9"/>
-                    
-                    <!-- Center circle -->
+                    <polygon points="0,-120 40,-40 120,-30 40,20 60,100 0,60 -60,100 -40,20 -120,-30 -40,-40" fill="url(#redGrad)" opacity="0.9"/>
                     <circle cx="0" cy="0" r="50" fill="#0a0a0a" stroke="url(#redGrad)" stroke-width="3"/>
-                    
-                    <!-- Blood drop symbol -->
-                    <path d="M 0,-30 Q -15,-10 -15,10 Q -15,25 0,35 Q 15,25 15,10 Q 15,-10 0,-30 Z" 
-                          fill="url(#redGrad)" filter="url(#glow)"/>
-                    
-                    <!-- Crosshair -->
+                    <path d="M 0,-30 Q -15,-10 -15,10 Q -15,25 0,35 Q 15,25 15,10 Q 15,-10 0,-30 Z" fill="url(#redGrad)" filter="url(#glow)"/>
                     <line x1="-180" y1="0" x2="-200" y2="0" stroke="url(#redGrad)" stroke-width="3"/>
                     <line x1="180" y1="0" x2="200" y2="0" stroke="url(#redGrad)" stroke-width="3"/>
                     <line x1="0" y1="-180" x2="0" y2="-200" stroke="url(#redGrad)" stroke-width="3"/>
                     <line x1="0" y1="180" x2="0" y2="200" stroke="url(#redGrad)" stroke-width="3"/>
                 </g>
-                
-                <!-- Corner accents -->
                 <g opacity="0.6">
                     <polyline points="50,50 50,100 100,100" fill="none" stroke="url(#redGrad)" stroke-width="3"/>
                     <polyline points="750,50 750,100 700,100" fill="none" stroke="url(#redGrad)" stroke-width="3"/>
                     <polyline points="50,550 50,500 100,500" fill="none" stroke="url(#redGrad)" stroke-width="3"/>
                     <polyline points="750,550 750,500 700,500" fill="none" stroke="url(#redGrad)" stroke-width="3"/>
                 </g>
-                
-                <!-- Glowing particles -->
                 <g opacity="0.7">
-                    <circle cx="150" cy="100" r="3" fill="#ff3333">
-                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="650" cy="150" r="2" fill="#ff6b00">
-                        <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="200" cy="500" r="2.5" fill="#ff3333">
-                        <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="600" cy="450" r="3" fill="#ff6b00">
-                        <animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/>
-                    </circle>
+                    <circle cx="150" cy="100" r="3" fill="#ff3333"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></circle>
+                    <circle cx="650" cy="150" r="2" fill="#ff6b00"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/></circle>
+                    <circle cx="200" cy="500" r="2.5" fill="#ff3333"><animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="600" cy="450" r="3" fill="#ff6b00"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/></circle>
                 </g>
             </svg>
         </section>
-		
-		<script type="text/javascript">
-    var wqSdw_EHq_QCPXRc={"it":4597383,"key":"46b54"};
-</script>
-<script src="https://d3v3431sr9puku.cloudfront.net/d0a16ab.js"></script>
 
-</section>
+        <script type="text/javascript">
+            var wqSdw_EHq_QCPXRc={"it":4597383,"key":"46b54"};
+        </script>
+        <script src="https://d3v3431sr9puku.cloudfront.net/d0a16ab.js"></script>
 
         <!-- Download Section -->
         <section class="download-section">
             <h2 class="section-title">Download Now</h2>
-            
             <div class="download-grid">
                 <!-- Android -->
                 <div class="download-card">
@@ -490,11 +676,8 @@
                     </div>
                     <h3 class="platform-name">Android</h3>
                     <p class="platform-desc">For Android Devices</p>
-                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn">
-                        <span>Download</span>
-                    </a>
+                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn"><span>Download</span></a>
                 </div>
-
                 <!-- iOS -->
                 <div class="download-card">
                     <div class="download-icon">
@@ -504,11 +687,8 @@
                     </div>
                     <h3 class="platform-name">iOS</h3>
                     <p class="platform-desc">For iPhone & iPad</p>
-                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn">
-                        <span>Download</span>
-                    </a>
+                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn"><span>Download</span></a>
                 </div>
-
                 <!-- PC -->
                 <div class="download-card">
                     <div class="download-icon">
@@ -518,9 +698,107 @@
                     </div>
                     <h3 class="platform-name">PC</h3>
                     <p class="platform-desc">For Desktop Computer</p>
-                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn">
-                        <span>Download</span>
-                    </a>
+                    <a href="javascript:void(0)" onclick="_CJ()" class="download-btn"><span>Download</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES SECTION ===== -->
+        <section class="features-section reveal">
+            <h2 class="section-title" style="opacity:1;">FEATURES</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Advanced tools to guarantee perfect aim</p>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <span class="feature-emoji">🎯</span>
+                    <h3 class="feature-name">Aimbot</h3>
+                    <p class="feature-desc">Pixel-perfect precision. Customizable settings for legit or rage play.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-emoji">👁️</span>
+                    <h3 class="feature-name">ESP</h3>
+                    <p class="feature-desc">See enemies and loot through walls in real time.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-emoji">⚙️</span>
+                    <h3 class="feature-name">Silent Aim</h3>
+                    <p class="feature-desc">Hit targets without snapping crosshair-look legit while dominating.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-emoji">📦</span>
+                    <h3 class="feature-name">Loot ESP</h3>
+                    <p class="feature-desc">Locate weapons, shields, and chests easily.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-emoji">🖱️</span>
+                    <h3 class="feature-name">Trigger Bot</h3>
+                    <p class="feature-desc">Auto-shoot when crosshair is on a target.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-emoji">💡</span>
+                    <h3 class="feature-name">Smart Targeting</h3>
+                    <p class="feature-desc">Prioritize enemies by distance, health, or weapon.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY BLOOD STRIKE SECTION ===== -->
+        <section class="why-section reveal">
+            <h2 class="section-title" style="opacity:1;">WHY AIMBOT?</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Designed for serious Blood Strike players</p>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <span class="why-emoji">🆓</span>
+                    <h3 class="why-name">100% Free</h3>
+                    <p class="why-desc">Our aimbot is free forever, no strings attached.</p>
+                </div>
+                <div class="why-card reveal">
+                    <span class="why-emoji">🛡️</span>
+                    <h3 class="why-name">Safe & Secure</h3>
+                    <p class="why-desc">Undetectable with advanced protection.</p>
+                </div>
+                <div class="why-card reveal">
+                    <span class="why-emoji">🔁</span>
+                    <h3 class="why-name">Always Updated</h3>
+                    <p class="why-desc">Stay compatible with every patch.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ SECTION ===== -->
+        <section class="faq-section reveal">
+            <h2 class="section-title" style="opacity:1;">FAQ</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Frequently Asked Questions</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Is Aimbot really free?
+                        <span class="faq-arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">Yes! Aimbot is 100% free to use and will aways remain free.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Will I get banned for using this aimbot?
+                        <span class="faq-arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">Our tools are undetectable with advanced protection, but cheating always carries risks. Use responsibly.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How do I install Aimbot?
+                        <span class="faq-arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">Simply download using the button above, unzip the file, and follow the included setup instructions. Easy and fast.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you provide updates?
+                        <span class="faq-arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">Yes! Aimbot is always updated to work with the latest BLOOD TRIKR patches.</div>
                 </div>
             </div>
         </section>
@@ -532,22 +810,19 @@
     </div>
 
     <script>
-	
-	
         // Cursor trail effect
         document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.8) { // Only create trails occasionally
+            if (Math.random() > 0.8) {
                 const trail = document.createElement('div');
                 trail.className = 'cursor-trail';
                 trail.style.left = e.pageX + 'px';
                 trail.style.top = e.pageY + 'px';
                 document.body.appendChild(trail);
-                
                 setTimeout(() => trail.remove(), 1000);
             }
         });
 
-        // Add click ripple effect
+        // Click ripple effect
         document.querySelectorAll('.download-card').forEach(card => {
             card.addEventListener('click', function(e) {
                 const ripple = document.createElement('div');
@@ -555,7 +830,6 @@
                 const size = Math.max(rect.width, rect.height);
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
-                
                 ripple.style.cssText = `
                     position: absolute;
                     width: ${size}px;
@@ -567,27 +841,39 @@
                     pointer-events: none;
                     animation: rippleEffect 0.6s ease-out;
                 `;
-                
                 this.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 600);
             });
         });
 
-        // Add ripple animation
+        // Ripple animation
         const style = document.createElement('style');
         style.textContent = `
             @keyframes rippleEffect {
-                from {
-                    transform: scale(0);
-                    opacity: 1;
-                }
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
+                from { transform: scale(0); opacity: 1; }
+                to { transform: scale(2); opacity: 0; }
             }
         `;
         document.head.appendChild(style);
+
+        // FAQ toggle
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
